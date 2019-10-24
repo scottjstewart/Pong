@@ -36,8 +36,8 @@ ball.shape("circle")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 2
-ball.dy = 2
+ball.dx = 4
+ball.dy = 4
 
 # Turtle Score Pen
 pen = turtle.Turtle()
@@ -54,26 +54,26 @@ pen.write("Player1: 0  Player2: 0", align="center",
 
 def paddle_a_up():
     y = paddle_a.ycor()
-    y += 20
+    y += 40
     paddle_a.sety(y)
 
 
 def paddle_a_down():
     y = paddle_a.ycor()
-    y -= 20
+    y -= 40
     paddle_a.sety(y)
 
 
 # Paddle B Functions
 def paddle_b_up():
     y = paddle_b.ycor()
-    y += 20
+    y += 40
     paddle_b.sety(y)
 
 
 def paddle_b_down():
     y = paddle_b.ycor()
-    y -= 20
+    y -= 40
     paddle_b.sety(y)
 
 
@@ -97,12 +97,12 @@ while True:
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1
-        os.system("afplay Beep1.wav&")
+        os.system("afplay Beep2.wav&")
 
     if ball.ycor() < -290:
         ball.sety(-290)
         ball.dy *= -1
-        os.system("afplay Beep1.wav&")
+        os.system("afplay Beep2.wav&")
 
     # Border Checks Right to Left
     if ball.xcor() > 390:
@@ -120,14 +120,15 @@ while True:
         pen.clear()
         pen.write("Player1: {}  Player2: {}".format(score_a, score_b), align="center",
                   font=("Courier", 24, "bold"))
+
     # Right Paddle Contact
-    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
+    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50):
         ball.setx(340)
         ball.dx *= -1
-        os.system("afplay Beep1.wav&")
+        os.system("afplay Beep2.wav&")
 
     #  Left Paddle Contact
-    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
+    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() - 50):
         ball.setx(-340)
         ball.dx *= -1
-        os.system("afplay Beep1.wav&")
+        os.system("afplay Beep2.wav&")
